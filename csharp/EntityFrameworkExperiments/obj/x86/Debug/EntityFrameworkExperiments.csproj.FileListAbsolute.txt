@@ -1,0 +1,6 @@
+C:\Users\bharrison\Documents\GitHub\what-the-ef\EntityFrameworkExperiments\bin\Debug\EntityFrameworkExperiments.exe.config
+C:\Users\bharrison\Documents\GitHub\what-the-ef\EntityFrameworkExperiments\bin\Debug\EntityFrameworkExperiments.exe
+C:\Users\bharrison\Documents\GitHub\what-the-ef\EntityFrameworkExperiments\bin\Debug\EntityFrameworkExperiments.pdb
+C:\Users\bharrison\Documents\GitHub\what-the-ef\EntityFrameworkExperiments\obj\x86\Debug\EntityFrameworkExperiments.exe
+C:\Users\bharrison\Documents\GitHub\what-the-ef\EntityFrameworkExperiments\obj\x86\Debug\EntityFrameworkExperiments.pdb
+C:\Users\bharrison\Documents\GitHub\what-the-ef\EntityFrameworkExperiments\obj\x86\Debug\ResolveAssemblyReference.cache

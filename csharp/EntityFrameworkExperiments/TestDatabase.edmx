@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="TestDatabaseModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="TestDatabaseModelStoreContainer">
+          <EntitySet Name="Login" EntityType="TestDatabaseModel.Store.Login" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="WebService_Log" EntityType="TestDatabaseModel.Store.WebService_Log" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="Login">
+          <Key>
+            <PropertyRef Name="loginID" />
+          </Key>
+          <Property Name="loginID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="personID" Type="int" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="128" />
+          <Property Name="password" Type="varchar" MaxLength="250" />
+          <Property Name="createDTM" Type="datetime" />
+          <Property Name="modifyDTM" Type="datetime" />
+          <Property Name="active" Type="int" />
+          <Property Name="sourceIPHost" Type="varchar" MaxLength="255" />
+          <Property Name="ResetToken" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="WebService_Log">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Inbound" Type="tinyint" />
+          <Property Name="URL" Type="varchar" MaxLength="2083" />
+          <Property Name="Request" Type="varchar(max)" />
+          <Property Name="Response" Type="varchar(max)" />
+          <Property Name="DateTimeRequested" Type="datetime" />
+          <Property Name="DateTimeResponded" Type="datetime" />
+          <Property Name="ApiKey" Type="uniqueidentifier" />
+        </EntityType>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TestDatabaseModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="TestDatabaseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Login" EntityType="TestDatabaseModel.Login" />
+          <EntitySet Name="WebService_Log" EntityType="TestDatabaseModel.WebService_Log" />
+        </EntityContainer>
+        <EntityType Name="Login">
+          <Key>
+            <PropertyRef Name="loginID" />
+          </Key>
+          <Property Name="loginID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="personID" Type="Int32" Nullable="false" />
+          <Property Name="username" Type="String" MaxLength="128" Unicode="false" FixedLength="false" />
+          <Property Name="password" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
+          <Property Name="createDTM" Type="DateTime" />
+          <Property Name="modifyDTM" Type="DateTime" />
+          <Property Name="active" Type="Int32" />
+          <Property Name="sourceIPHost" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="ResetToken" Type="Guid" />
+        </EntityType>
+        <EntityType Name="WebService_Log">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Inbound" Type="Byte" />
+          <Property Name="URL" Type="String" MaxLength="2083" Unicode="false" FixedLength="false" />
+          <Property Name="Request" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="Response" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="DateTimeRequested" Type="DateTime" />
+          <Property Name="DateTimeResponded" Type="DateTime" />
+          <Property Name="ApiKey" Type="Guid" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TestDatabaseModelStoreContainer" CdmEntityContainer="TestDatabaseEntities">
+          <EntitySetMapping Name="Login"><EntityTypeMapping TypeName="TestDatabaseModel.Login"><MappingFragment StoreEntitySet="Login">
+            <ScalarProperty Name="loginID" ColumnName="loginID" />
+            <ScalarProperty Name="personID" ColumnName="personID" />
+            <ScalarProperty Name="username" ColumnName="username" />
+            <ScalarProperty Name="password" ColumnName="password" />
+            <ScalarProperty Name="createDTM" ColumnName="createDTM" />
+            <ScalarProperty Name="modifyDTM" ColumnName="modifyDTM" />
+            <ScalarProperty Name="active" ColumnName="active" />
+            <ScalarProperty Name="sourceIPHost" ColumnName="sourceIPHost" />
+            <ScalarProperty Name="ResetToken" ColumnName="ResetToken" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="WebService_Log"><EntityTypeMapping TypeName="TestDatabaseModel.WebService_Log"><MappingFragment StoreEntitySet="WebService_Log">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="Inbound" ColumnName="Inbound" />
+            <ScalarProperty Name="URL" ColumnName="URL" />
+            <ScalarProperty Name="Request" ColumnName="Request" />
+            <ScalarProperty Name="Response" ColumnName="Response" />
+            <ScalarProperty Name="DateTimeRequested" ColumnName="DateTimeRequested" />
+            <ScalarProperty Name="DateTimeResponded" ColumnName="DateTimeResponded" />
+            <ScalarProperty Name="ApiKey" ColumnName="ApiKey" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="TestDatabase">
+        <EntityTypeShape EntityType="TestDatabaseModel.Login" Width="1.5" PointX="0.75" PointY="0.75" Height="2.7494921874999996" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestDatabaseModel.WebService_Log" Width="1.5" PointX="2.75" PointY="0.75" Height="2.5571907552083326" IsExpanded="true" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TestDatabaseModelStoreContainer" CdmEntityContainer="TestDatabaseEntities">
+    <EntitySetMapping Name="Login">
+      <EntityTypeMapping TypeName="TestDatabaseModel.Login">
+        <MappingFragment StoreEntitySet="Login">
+          <ScalarProperty Name="loginID" ColumnName="loginID" />
+          <ScalarProperty Name="personID" ColumnName="personID" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="createDTM" ColumnName="createDTM" />
+          <ScalarProperty Name="modifyDTM" ColumnName="modifyDTM" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="sourceIPHost" ColumnName="sourceIPHost" />
+          <ScalarProperty Name="ResetToken" ColumnName="ResetToken" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WebService_Log">
+      <EntityTypeMapping TypeName="TestDatabaseModel.WebService_Log">
+        <MappingFragment StoreEntitySet="WebService_Log">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Inbound" ColumnName="Inbound" />
+          <ScalarProperty Name="URL" ColumnName="URL" />
+          <ScalarProperty Name="Request" ColumnName="Request" />
+          <ScalarProperty Name="Response" ColumnName="Response" />
+          <ScalarProperty Name="DateTimeRequested" ColumnName="DateTimeRequested" />
+          <ScalarProperty Name="DateTimeResponded" ColumnName="DateTimeResponded" />
+          <ScalarProperty Name="ApiKey" ColumnName="ApiKey" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

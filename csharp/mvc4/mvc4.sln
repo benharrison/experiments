@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mvc4", "mvc4\mvc4.csproj", "{2D987F26-BE4E-4881-AD81-64FA275079EC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mvc4.Tests", "mvc4.Tests\mvc4.Tests.csproj", "{6EDABEA3-7AC9-4F7F-AD8D-17BC0BECA12A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2D987F26-BE4E-4881-AD81-64FA275079EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D987F26-BE4E-4881-AD81-64FA275079EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D987F26-BE4E-4881-AD81-64FA275079EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D987F26-BE4E-4881-AD81-64FA275079EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EDABEA3-7AC9-4F7F-AD8D-17BC0BECA12A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EDABEA3-7AC9-4F7F-AD8D-17BC0BECA12A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EDABEA3-7AC9-4F7F-AD8D-17BC0BECA12A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EDABEA3-7AC9-4F7F-AD8D-17BC0BECA12A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

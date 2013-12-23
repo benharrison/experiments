@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TestDatabaseModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="TestDatabaseModelStoreContainer">
+    <EntitySet Name="Login" EntityType="TestDatabaseModel.Store.Login" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WebService_Log" EntityType="TestDatabaseModel.Store.WebService_Log" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="Login">
+    <Key>
+      <PropertyRef Name="loginID" />
+    </Key>
+    <Property Name="loginID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="personID" Type="int" Nullable="false" />
+    <Property Name="username" Type="varchar" MaxLength="128" />
+    <Property Name="password" Type="varchar" MaxLength="250" />
+    <Property Name="createDTM" Type="datetime" />
+    <Property Name="modifyDTM" Type="datetime" />
+    <Property Name="active" Type="int" />
+    <Property Name="sourceIPHost" Type="varchar" MaxLength="255" />
+    <Property Name="ResetToken" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="WebService_Log">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Inbound" Type="tinyint" />
+    <Property Name="URL" Type="varchar" MaxLength="2083" />
+    <Property Name="Request" Type="varchar(max)" />
+    <Property Name="Response" Type="varchar(max)" />
+    <Property Name="DateTimeRequested" Type="datetime" />
+    <Property Name="DateTimeResponded" Type="datetime" />
+    <Property Name="ApiKey" Type="uniqueidentifier" />
+  </EntityType>
+</Schema>
