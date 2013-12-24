@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style type="text/css">
+            .number_button {
+                width:30px;
+                }
+        </style>
+    </head>
+    <body>
+        <table>
+            <tr>
+                <td colspan="3">
+                    <div id="output" style="text-align:right;"></div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input class="number_button" type="button" value="1" onclick="append_total(1);" />
+                </td>
+                <td>
+                    <input class="number_button" type="button" value="2" onclick="append_total(2);" />
+                </td>
+                <td>
+                    <input class="number_button" type="button" value="3" onclick="append_total(3);" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input class="number_button" type="button" value="4" onclick="append_total(4);" />
+                </td>
+                <td>
+                    <input class="number_button" type="button" value="5" onclick="append_total(5);" />
+                </td>
+                <td>
+                    <input class="number_button" type="button" value="6" onclick="append_total(6);" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input class="number_button" type="button" value="7" onclick="append_total(7);" />
+                </td>
+                <td>
+                    <input class="number_button" type="button" value="8" onclick="append_total(8);" />
+                </td>
+                <td>
+                    <input class="number_button" type="button" value="9" onclick="append_total(9);" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input class="number_button" type="button" value="" onclick="" />
+                </td>
+                <td>
+                    <input class="number_button" type="button" value="0" onclick="append_total(0);" />
+                </td>
+                <td>
+                    <input class="number_button" type="button" value="C" onclick="clear()" />
+                </td>
+            </tr>
+        </table>
+        
+        <input id="btnStartStop" type="button" value="Start" onclick="start_timer()" />
+    </body>
+
+<script type="text/javascript">
+var count_down_string   = "", // total time
+    count_down_seconds  = 0, // total seconds
+    timer_running       = false;
+
+function clear() {
+    count_down_string = "";
+    document.getElementById("output").innerHTML = seconds_to_time(0);
+}
+
+function append_total(number) {
+    if (count_down_string.length < 7)
+        count_down_string += number.toString();
+    document.getElementById("output").innerHTML = format_input();
+}
+
+function format_input() {
+    cds = ( "000000" + count_down_string ).substr( count_down_string.length );
+    
+    var seconds = cds.substring(4),
+        minutes = cds.substring(2, 4),
+        hours   = cds.substring(0, 2);
+    
+    return hours + ":" + minutes + ":" + seconds;
+}
+
+function seconds_to_time(sec) {
+    var seconds = (sec % 60).toString(),
+        minutes = Math.floor( sec / 60 ).toString(),
+        hours   = Math.floor( sec / (60 * 60) ).toString();
+    
+    if (seconds.length < 2) seconds = "0" + seconds;
+    if (minutes.length < 2) minutes = "0" + minutes;
+    if (hours.length < 2) hours = "0" + hours;
+    
+    return hours + ":" + minutes + ":" + seconds;
+}
+
+function start_timer() {
+    if (!timer_running) {
+        timer_running = true;
+        document.getElementById('btnStartStop').value = "Stop";
+        
+        cds = ( "000000" + count_down_string ).substr( count_down_string.length );
+        
+        var seconds = parseInt( cds.substring(4) ),
+            minutes = parseInt( cds.substring(2, 4) ),
+            hours   = parseInt( cds.substring(0, 2) );
+        
+        count_down_seconds = 0;
+        count_down_seconds += seconds;
+        count_down_seconds += minutes * 60;
+        count_down_seconds += hours * 60 * 60;
+        
+        var count_down = count_down_seconds;
+        var startDate = new Date(),
+            currDate = null;
+        
+        (function(){
+            currDate = new Date();
+            var diff = Math.floor( (currDate - startDate) / 1000 );
+            count_down = count_down_seconds - diff;
+            
+            document.getElementById("output").innerHTML = seconds_to_time(count_down); // output time
+            
+            if (diff < count_down_seconds) {
+                setTimeout(arguments.callee, 100);
+            } else {
+                document.getElementById('btnStartStop').value = "Start";
+                alert(diff + " " + count_down_seconds + " done");
+            }
+        })();
+    } else {
+        timer_running = false;
+        document.getElementById('btnStartStop').value = "Start";
+        
+    }
+}
+</script>
+
+</html>

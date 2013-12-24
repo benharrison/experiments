@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en-US" style="overflow-y: scroll;">
+<head>
+    <title>jQuery FancyBox Modal Test</title>
+
+    <!-- CSS -->
+    <link href='gs/reset.css' rel='stylesheet' type='text/css'>
+    <link href='gs/text.css' rel='stylesheet' type='text/css'>
+    <link href='gs/960_24_col.css' rel='stylesheet' type='text/css'>
+    
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans:regular,bold' rel='stylesheet' type='text/css'>
+    <!--link href='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.7/themes/ui-lightness/jquery-ui.css' rel='stylesheet' type='text/css'-->
+    <link href='calendar/jq_ui.css' rel='stylesheet' type='text/css'>
+    <!-- http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.7/themes/ui-lightness/jquery-ui.css -->
+    
+    <style type="text/css">
+        body {
+            background-color:#e5e5e5;
+            font-family: 'Droid Sans';
+            }
+            
+        .container_24 {
+            background-color:#fff;
+            }
+            
+        .grid_18 {
+            min-height:800px;
+            margin-top:60px;
+            }
+        
+        /*-- BEGIN CALENDAR STYLE -----------------------------*/
+        
+        #ui-datepicker-div {
+            display:none;
+            }
+    </style>
+</head>
+<body>
+    
+    <div class="container_24">
+        <div class="prefix_3 grid_18 suffix_3">
+            <div id="datepicker"></div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    
+    <!-- JavaScript -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.7/jquery-ui.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $( "#datepicker" ).datepicker({
+                showOtherMonths: true,
+                selectOtherMonths: true,
+            0:0});
+        });
+    </script>
+</body>
+</html>

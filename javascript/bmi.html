@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<title>BMI</title>
+	
+	<!-- CSS -->
+	<style type="text/css">
+		tr.highlight{
+			background-color:#ff0;
+			}
+	</style>
+	
+	<!-- JavaScript -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		function update_bmi(){
+			// height
+			var feet	= parseInt($("#height_feet").val());
+			var inch	= parseInt($("#height_inch").val());
+			var height	= (feet * 12) + inch;
+			
+			// weight
+			var weight	= parseInt($("#weight").val());
+			
+			// calculate
+			var bmi		= ( (weight * 703) / (height * height) ) * 100;
+			bmi			= Math.round(bmi) / 100;
+			
+			// output
+			if (!isNaN(bmi)) {
+				$("#bmi_output").html(bmi);
+			}
+			else{
+				$("#bmi_output").html("&nbsp;");
+			}
+			
+			// highlight
+			clearChart();
+			
+			if (bmi <= 18.5){
+				$("#underweight").addClass("highlight");
+			}
+			else if ( (bmi > 18.5) && (bmi <= 24.99) ){
+				$("#normalweight").addClass("highlight");
+			}
+			else if ( (bmi > 24.99) && (bmi <= 29.99) ){
+				$("#overweight").addClass("highlight");
+			}
+			else if ( (bmi > 29.99) && (bmi <= 34.99) ){
+				$("#obese1").addClass("highlight");
+			}
+			else if ( (bmi > 34.99) && (bmi <= 39.99) ){
+				$("#obese2").addClass("highlight");
+			}
+			else if (bmi > 39.99) {
+				$("#morbid").addClass("highlight");
+			}
+			else {
+				
+			}
+			
+			console.log(bmi);
+		}
+		
+		function clearChart(){
+			$("#bmi_chart tr").removeClass("highlight");
+		}
+		
+		function validate(){
+			var feet	= parseInt($("#height_feet").val());
+			var inch	= parseInt($("#height_inch").val());
+			var weight	= parseInt($("#weight").val());
+			
+			if (isNaN(feet)) feet = 0;
+			
+			// inches
+			if (inch >= 12) {
+				$("#height_inch").val(0);
+				feet += 1;
+				$("#height_feet").val(feet);
+			}
+			
+			if (inch < 0) {
+				if (feet > 0) {
+					$("#height_inch").val(11);
+					$("#height_feet").val(feet - 1);
+				}else{
+					$("#height_inch").val(0);
+					$("#height_feet").val(0);
+				}
+			}
+			
+			// feet
+			if (feet < 0) $("#height_feet").val(0);
+			
+			// weight
+			if (weight < 0) $("#weight").val(0);
+		}
+		
+		$(document).ready(function(){
+			$('input').bind('keydown', function(e) {
+				var code = (e.keyCode ? e.keyCode : e.which);
+				var inputValue = parseInt($(this).val());
+				var newValue;
+				
+				switch(code){
+					case 38: // up arrow
+						if (!isNaN(inputValue))
+						{
+							$(this).val(inputValue + 1);
+						}else{
+							$(this).val(1);
+						}
+						break;
+					case 40: // down arrow
+						if (!isNaN(inputValue))
+						{
+							$(this).val(inputValue - 1);
+						}else{
+							$(this).val(0);
+						}
+						break;
+					}
+					
+				validate();
+				update_bmi();
+			});
+			
+			$('input').bind('keyup', function(e) {
+				validate();
+				update_bmi();
+			});
+			
+			update_bmi();
+		});
+	</script>
+</head>
+<body>
+	<input type="textbox" id="height_feet">
+	<input type="textbox" id="height_inch">
+	<input type="textbox" id="weight">
+	
+	<div id="bmi_output">&nbsp;</div>
+	
+	<table id="bmi_chart">
+		<tr id="underweight" class="highlight">
+			<td>Underweight</td>
+			<td>&lt; 18.5</td>
+		</tr>
+		<tr id="normalweight">
+			<td>Normal weight</td>
+			<td>18.5-24.9</td>
+		</tr>
+		<tr id="overweight">
+			<td>Overweight</td>
+			<td>25-29.9</td>
+		</tr>
+		<tr id="obese1">
+			<td>Obesity</td>
+			<td>30-34.9</td>
+		</tr>
+		<tr id="obese2">
+			<td>Obesity</td>
+			<td>35-39.9</td>
+		</tr>
+		<tr id="morbid">
+			<td>Morbid Obesity</td>
+			<td>40 &gt;</td>
+		</tr>
+	</table>
+</body>
+</html>

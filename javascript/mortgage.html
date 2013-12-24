@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <title>Mortgage</title>
+
+    <!-- CSS -->
+    <style type="text/css">
+        
+    </style>
+
+    <!-- JavaScript -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+        function amortization(loan, payment, interest, term){
+            console.clear();
+            var balance = loan;
+            var ins = interest / 12;
+            
+            for (var i = 1; i <= (term * 12); i++){
+                var ip = balance * ins;
+                balance = balance - payment + ip;
+                console.log(i + " " + balance);
+            }
+        }
+        
+        function calculate_mortgage(){
+            var loan_amount     = parseInt($("#loan_amount").val());
+            var interest_rate   = parseFloat($("#interest_rate").val()) / 100;
+            var loan_term       = parseInt($("#loan_term").val());
+            
+            var i = interest_rate / 12;
+            var n = 12 * loan_term;
+            var x = Math.pow(1 + i, n);
+            
+            var P = Math.round(((i * x) / (x - 1)) * loan_amount * 100) / 100;
+            var total = P * n;
+            $("#output").html("$" + P + " " + total);
+            return P;
+        }
+        
+        $(document).ready(function(){
+            $('input').bind('keyup', function(e) {
+                var code = (e.keyCode ? e.keyCode : e.which);
+                
+                calculate_mortgage();
+            });
+            
+            $('#amortization').click(function(){
+                amortization(parseInt($("#loan_amount").val()), calculate_mortgage(), parseInt($("#interest_rate").val()), parseInt($("#loan_term").val()))
+            });
+        });
+    </script>
+</head>
+<body>
+    <label for="loan_amount">Loan Amount</label> <input type="textbox" id="loan_amount"><br />
+    <label for="interest_rate">Interest Rate</label> <input type="textbox" id="interest_rate"><br />
+    <label for="loan_term">Loan Term</label> <input type="textbox" id="loan_term"><br />
+
+    <div id="output">&nbsp;</div>
+    
+    <a href="#" onclick="return false;" id="amortization">Amortization</a>
+</body>
+</html>

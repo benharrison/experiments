@@ -1,0 +1,58 @@
+<!doctype html>
+<html ng-app>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
+    <script>
+        var PromptToSaveCtrl = function($scope) {
+            $scope.master = {};
+            
+            $scope.update = function(user) {
+                $scope.master = angular.copy(user);
+            };
+            
+            $scope.firstName = 'Ben';
+            $scope.lastName = 'Harrison';
+        }
+        
+        function Controller($scope) {
+          $scope.master = {};
+         
+          $scope.update = function(user) {
+            $scope.master= angular.copy(user);
+          };
+         
+          $scope.reset = function() {
+            $scope.user = angular.copy($scope.master);
+          };
+         
+          $scope.reset();
+        }
+    </script>
+  </head>
+  <body>
+    <div ng-controller="PromptToSaveCtrl">
+        <h1>Prompt To Save</h1>
+        
+        <p>
+        The goal of this application is to display a Save Dialog after the user has made a change to the form.
+        </p>
+        
+        <input type="text" ng-model="user.firstName" />
+    </div>
+    
+    <div ng-controller="Controller">
+      <form >
+        Name: <input type="text" ng-model="user.name" /><br />
+        E-mail: <input type="email" ng-model="user.email" /><br />
+        E-mail: <input type="email" ng-model="user.email2" /><br />
+        Gender: <input type="radio" ng-model="user.gender" value="male" />male
+                <input type="radio" ng-model="user.gender" value="female" />female
+        <br />
+        <button ng-click="reset()">RESET</button>
+        <button ng-click="update(user)">SAVE</button>
+      </form>
+      <pre>form = {{user | json}}</pre>
+      <pre>master = {{master | json}}</pre>
+    </div>
+  </body>
+</html>

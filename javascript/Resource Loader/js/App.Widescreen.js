@@ -1,0 +1,1 @@
+App = App || {};App.Widescreen = (function(){    return {        init : function(){            $('#page_title').html('Widescreen');        }    }})();

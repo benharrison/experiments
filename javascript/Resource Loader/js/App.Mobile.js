@@ -1,0 +1,1 @@
+App = App || {};App.Mobile = (function(){    return {        init : function(){            $('#page_title').html('Mobile');        }    }})();

@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <title>Guessing Game</title>
+
+<script language="JavaScript">
+	var num = Math.floor(Math.random() * 101);
+	//console.log(num);
+	
+	function guessnum(){
+		var guess = document.forms['form1'].num.value;
+		//console.log(guess);
+		
+		if (guess == num) alert("Correct");
+		if (guess > num)  alert("Too High");
+		if (guess < num)  alert("Too Low");
+	}
+</script>
+
+</head>
+<body>
+	<form name="form1">
+		Enter a number <input type="text" name="num" />
+		<input type="button" onclick="guessnum();" value="Enter" />
+	</form>
+</body>
+</html>

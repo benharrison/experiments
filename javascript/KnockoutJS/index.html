@@ -1,0 +1,152 @@
+<!doctype html>
+<html>
+    <head>
+        <title>AutoBook Knockout Concept</title>
+        
+        <!--script type='text/javascript' src='jquery-1.4.2.min.js'></script-->
+        <!--script type='text/javascript' src='jquery-tmpl.js'></script-->
+        <script type='text/javascript' src='knockout-1.2.1.js'></script>
+    </head>
+<body>
+
+<h2>Customer</h2>
+<table>
+    <tr>
+        <td><label for="txtFirstName">First Name</label></td>
+        <td><input id="txtFirstName" data-bind="value: firstName" type="text" /></td>
+    </tr>
+    <tr>
+        <td><label for="txtLastName">Last Name:</label></td>
+        <td><input id="txtLastName" data-bind="value: lastName" type="text" /></td>
+    </tr>
+    <tr>
+        <td><label for="txtCompany">Company:</label></td>
+        <td><input id="txtCompany" data-bind="value: company" type="text" /></td>
+    </tr>
+    <tr>
+        <td><label for="txtEmailAddress">Email Address:</label></td>
+        <td><input id="txtEmailAddress" data-bind="value: emailAddress" type="text" /></td>
+    </tr>
+    <tr>
+        <td><label for="txtMobilePhone">Mobile Phone:</label></td>
+        <td><input id="txtMobilePhone" data-bind="value: mobilePhone" type="text" /></td>
+    </tr>
+    <tr>
+        <td><label for="txtHomePhone">Home Phone:</label></td>
+        <td><input id="txtHomePhone" data-bind="value: homePhone" type="text" /></td>
+    </tr>
+    <tr>
+        <td><label for="txtWorkPhone">Work Phone:</label></td>
+        <td><input id="txtWorkPhone" data-bind="value: workPhone" type="text" /></td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <h2>Vehicle</h2>
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>
+            <select data-bind="options: vehicles, optionsText: 'fullName', optionsCaption: 'Select Vehicle...'"></select>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <h2>Services</h2>
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>
+            <select data-bind="options: services, optionsText: 'opCode'"></select>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <h2>Summary</h2>
+        </td>
+    </tr>
+    <tr>
+        <td>Date: </td>
+        <td>
+            <span data-bind="text: date"></span>
+        </td>
+    </tr>
+    <tr>
+        <td>Time: </td>
+        <td>
+            <span data-bind="text: time"></span>
+        </td>
+    </tr>
+    <tr>
+        <td>Date & Time: </td>
+        <td>
+            <span data-bind="text: dateTime"></span>
+        </td>
+    </tr>
+    <tr>
+        <td>Comments: </td>
+        <td>
+            <input data-bind="value: customerComments" />
+        </td>
+    </tr>
+    <tr>
+        <td>Advisor Notes: </td>
+        <td>
+            <input data-bind="value: advisorNotes" />
+        </td>
+    </tr>
+</table>
+
+<script type="text/javascript">
+    // Constructor
+    var Vehicle = function(year, make, model) {
+        this.year = year;
+        this.make = make;
+        this.model = model;
+        this.fullName = this.year + ' ' + this.make + ' ' + this.model;
+    };
+    
+    var Service = function(opcode, description, comments, price, duration) {
+        this.opCode = opcode;
+        this.description = description;
+        this.comments = comments;
+        this.price = price;
+        this.duration = duration;
+    };
+    
+    var currentCustomer = {
+        firstName: ko.observable('Ben'),
+        lastName: ko.observable('Harrison'),
+        company: ko.observable('Loop'),
+        emailAddress: ko.observable('bharrison912@gmail.com'),
+        mobilePhone: ko.observable(''),
+        homePhone: ko.observable('(727) 555-6782'),
+        workPhone: ko.observable(''),
+        vehicles: ko.observableArray([
+                    new Vehicle(2011, "Toyota", "Tacoma"),
+                    new Vehicle(2007, "Honda", "Pilot")
+                  ]),
+        services: ko.observableArray([
+                    new Service('LOF', 'Oil Change', '', 29.95, 0.5)
+                  ]),
+        advisor: ko.observable('Any Advisor'), // advisor id
+        transport: ko.observable('Drop Off'), // transport id
+        date: ko.observable( new Date() ),
+        time: ko.observable( new Date(0, 0, 0, 7, 45, 0) ),
+        customerComments: ko.observable(''),
+        advisorNotes: ko.observable('')
+    };
+    
+    currentCustomer.dateTime = ko.dependentObservable(function(){
+        var d = this.date(),
+            t = this.time();
+        return new Date(d.getFullYear(),d.getMonth(),d.getDate(),t.getHours(),t.getMinutes(),0);
+    }, currentCustomer);
+    
+    //currentCustomer.currentProfit(-50); // Causes the DIV's contents to go red
+    ko.applyBindings(currentCustomer);
+</script>
+
+</body>
+</html>

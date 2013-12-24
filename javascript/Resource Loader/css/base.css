@@ -1,0 +1,17 @@
+#main {
+    background-color:#e5e5e5;
+    margin:0 auto;
+    }
+
+#Mobile #main {
+    width:100%;
+    }
+#Tablet #main {
+    width:740px;
+    }
+#Standard #main {
+    width:960px;
+    }
+#Widescreen #main {
+    width:1200px;
+    }

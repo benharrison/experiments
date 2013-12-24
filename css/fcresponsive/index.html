@@ -1,0 +1,233 @@
+<!doctype html>
+<html>
+    <head>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css" type="text/css" rel="stylesheet" />
+        <link href="assets/css/style.css" type="text/css" rel="stylesheet" />
+        <link href="assets/css/bootstrap-custom.css" type="text/css" rel="stylesheet" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <header>
+            <div class="wrapper">
+                <h2>
+                    <a href="#">
+                        <strong>FreightCenter.com</strong>
+                    </a>
+                </h2>
+            </div>
+        </header>
+        
+        <nav>
+            <div class="wrapper">
+                <div class="row-fluid">
+                    <div class="span12">
+                        <ul class="group">
+                            <li><a href="#" class="hidden-phone">Home</a></li>
+                            <li><a href="#">Free Freight Quote</a></li>
+                            <li><a href="#">Track Your Shipment</a></li>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Help Center</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        
+        <!--
+        <div id="hero">
+            <div class="row-fluid">
+                <div class="span6">
+                    Get
+                </div>
+                <div class="span6">
+                    Quotes
+                </div>
+            </div>
+        </div>
+        
+        <p></p>
+        -->
+        
+        <div id="QuoteForm" class="wrapper">
+            <div class="well blue">
+                <div class="row-fluid">
+                    <div class="span12">
+                        <div class="well light-blue">
+                            <h4>1. Shipment Type</h4>
+                            
+                            <ul id="QuoteForm_QuoteType" class="group">
+                                <li><input type="radio" name="quotetype" id="ltl" value="ltl" /> <label for="ltl">Less-than-Truckload (LTL)</label></li>
+                                <li><input type="radio" name="quotetype" id="tl" value="tl" /> <label for="tl">Full Truckload</label></li>
+                                <li><input type="radio" name="quotetype" id="m" value="m" /> <label for="m">Motorcycle</label></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row-fluid">
+                    <div class="span6">
+                        <div class="well light-blue">
+                            <h4>2. Start Location</h4>
+                            
+                            <div class="group">
+                                <div class="QuoteForm_Location">
+                                    <div>
+                                        Zip / Postal Code
+                                        <input type="text" />
+                                    </div>
+                                    
+                                    <div>
+                                        Location Type
+
+                                        <select>
+                                            <option selected="selected" value="2">Business with Dock or Forklift</option>
+                                            <option value="3">Business without Dock or Forklift</option>
+                                            <option value="5">Construction Site</option>
+                                            <option value="6">Convention Center or Tradeshow </option>
+                                            <option value="1">Residential</option>
+                                            <option value="4">Terminal</option>
+                                        </select>
+
+                                    </div>
+                                </div>
+                                <div class="QuoteForm_Accessorials">
+                                    Extra Services Here?
+                                    
+                                    <div><input type="checkbox" /> Call for Appointment</div>
+                                    <div><input type="checkbox" /> Inside Pickup</div>
+                                    <div><input type="checkbox" /> Limited Access Pick Up</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="span6">
+                        <div class="well light-blue">
+                            <h4>3. End Location</h4>
+                            
+                            <div class="group">
+                                <div class="QuoteForm_Location">
+                                    <div>
+                                        Zip / Postal Code
+                                        <input type="text" />
+                                    </div>
+                                    
+                                    <div>
+                                        Location Type
+
+                                        <select>
+                                            <option selected="selected" value="2">Business with Dock or Forklift</option>
+                                            <option value="3">Business without Dock or Forklift</option>
+                                            <option value="5">Construction Site</option>
+                                            <option value="6">Convention Center or Tradeshow </option>
+                                            <option value="1">Residential</option>
+                                            <option value="4">Terminal</option>
+                                        </select>
+
+                                    </div>
+                                </div>
+                                <div class="QuoteForm_Accessorials">
+                                    Extra Services Here?
+                                    
+                                    <div><input type="checkbox" /> Call for Appointment</div>
+                                    <div><input type="checkbox" /> Inside Pickup</div>
+                                    <div><input type="checkbox" /> Limited Access Pick Up</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row-fluid">
+                    <div class="span12">
+                        <div class="well light-blue">
+                            <h4>4. Items to be Shipped</h4>
+                            
+                            <div id="QuoteForm_Items">
+                                <!--
+                                <div>
+                                    <th>#</th>
+                                    <th>Packaging</th>
+                                    <th>Quantity</th>
+                                    <th>Total Weight</th>
+                                    <th>Total Dimensions</th>
+                                    <th>Freight Class</th>
+                                </div>
+                                -->
+                                <div class="QuoteForm_Item group">
+                                    <div class="QuoteForm_Item_Number">
+                                        1
+                                    </div>
+                                    <div class="QuoteForm_Item_Packaging">
+                                        <label>Packaging</label>
+                                        <select name="Packaging1" id="Packaging1">
+                                            <option value="1">Boxed</option>
+                                            <option value="2">Crated</option>
+                                            <option value="3">Drums or Barrels</option>
+                                            <option value="4">Palletized</option>
+                                            <option value="5">Un-Packaged</option>
+                                        </select>
+                                    </div>
+                                    <div class="QuoteForm_Item_QuantityWeight">
+                                        <div class="QuoteForm_Item_Quantity">
+                                            <label>Quantity</label>
+                                            <input type="text" />
+                                        </div>
+                                        <div class="QuoteForm_Item_Weight">
+                                            <label>Total Weight</label>
+                                            <input type="text" />
+                                            <select id="WeightUOM1" name="WeightUOM1" style="width:60px;" >
+                                                <option value="L">lbs</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="QuoteForm_Item_Dimensions">
+                                        <label>Total Dimensions</label>
+                                        <input type="text" /> L
+                                        <input type="text" /> W
+                                        <input type="text" /> H
+                                        <select id="DimensionsUOM1" class="txtboxcommon" name="DimensionsUOM1" style="width:60px;" >
+                                            <option value="I">in</option>
+                                            <option value="F">ft</option>
+                                        </select>
+                                    </div>
+                                    <div class="QuoteForm_Item_FreightClass">
+                                        <label>Freight Class</label>
+                                        <select name="Class1" id="Class1" class="txtboxcommon">
+                                            <option value="None">None</option>
+                                            <option value="50">50</option>
+                                            <option value="55">55</option>
+                                            <option value="60">60</option>
+                                            <option value="65">65</option>
+                                            <option value="70">70</option>
+                                            <option value="77.5">77.5</option>
+                                            <option value="85">85</option>
+                                            <option value="92.5">92.5</option>
+                                            <option value="100">100</option>
+                                            <option value="110">110</option>
+                                            <option value="125">125</option>
+                                            <option value="150">150</option>
+                                            <option value="175">175</option>
+                                            <option value="200">200</option>
+                                            <option value="250">250</option>
+                                            <option value="300">300</option>
+                                            <option value="400">400</option>
+                                            <option value="500">500</option>
+                                        </select>
+                                    </div>
+                                    <div class="QuoteForm_Item_Remove">
+                                        <i class="icon-remove"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <a href="QuickQuoteReview.html" class="btn btn-primary btn-large">Get Quotes <i class='icon-white icon-arrow-right'></i></a>
+        </div><!-- /.wrapper -->
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/js/bootstrap.min.js" type="text/javascript">
+    </body>
+</html>

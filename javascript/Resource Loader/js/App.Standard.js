@@ -1,0 +1,1 @@
+App = App || {};App.Standard = (function(){    return {        init : function(){            $('#page_title').html('Standard');        }        }})();

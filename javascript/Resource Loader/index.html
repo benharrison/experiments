@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Resource Loader</title>
+        
+        <script>
+            var _RootLocation = (function(){
+                var l = location, p = l.pathname.split('/');
+                return l.protocol + '//' + l.host + '/' + p[1] + '/' + p[2] + '/';
+            })();
+        </script>
+        
+        <link rel="stylesheet" type="text/css" href="css/base.css" />
+    </head>
+    <body>
+        <div id="main">
+            <header>
+                <h2 id="page_title">App</h2>
+            </header>
+            
+            <nav>
+            </nav>
+            
+            <footer>
+            </footer>
+        </div>
+    </body>
+    
+    <script src="js/libs/yepnope.js"></script>
+    <script>
+        yepnope({
+            load: [
+                'https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js',
+                _RootLocation + 'js/App.js'
+                ],
+            complete: function(){
+                App.init();
+            }
+        });
+    </script>
+</html>

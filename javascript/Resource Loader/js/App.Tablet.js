@@ -1,0 +1,1 @@
+App = App || {};App.Tablet = (function(){    return {        init : function(){            $('#page_title').html('Tablet');        }        }})();

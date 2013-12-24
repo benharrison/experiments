@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+</head>
+<body>
+    <ul id="new_releases">
+    </ul>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            parseRSS('http://movies.netflix.com/NewWatchInstantlyRSS', function(data){
+                console.log(data);
+                
+                $.each(data.entries, function(index, obj){
+                    var $li = $('<li></li>');
+                    $li.html(obj.content);
+                    $('ul#new_releases').append($li);
+                    console.log( obj.title, obj.link );
+                })
+            })
+        });
+        
+        // http://stackoverflow.com/questions/226663/parse-rss-with-jquery
+        function parseRSS(url, callback) {
+          $.ajax({
+            url: document.location.protocol + '//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=50&callback=?&q=' + encodeURIComponent(url),
+            dataType: 'json',
+            success: function(data) {
+              callback(data.responseData.feed);
+            }
+          });
+        }
+    </script>
+</body>
+</html>
