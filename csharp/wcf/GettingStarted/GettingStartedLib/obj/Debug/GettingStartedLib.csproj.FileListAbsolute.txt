@@ -1,0 +1,6 @@
+C:\Users\bharisso\Documents\Visual Studio 2012\Projects\gs\GettingStartedLib\bin\Debug\GettingStartedLib.dll.config
+C:\Users\bharisso\Documents\Visual Studio 2012\Projects\gs\GettingStartedLib\bin\Debug\GettingStartedLib.dll
+C:\Users\bharisso\Documents\Visual Studio 2012\Projects\gs\GettingStartedLib\bin\Debug\GettingStartedLib.pdb
+C:\Users\bharisso\Documents\Visual Studio 2012\Projects\gs\GettingStartedLib\obj\Debug\GettingStartedLib.csprojResolveAssemblyReference.cache
+C:\Users\bharisso\Documents\Visual Studio 2012\Projects\gs\GettingStartedLib\obj\Debug\GettingStartedLib.dll
+C:\Users\bharisso\Documents\Visual Studio 2012\Projects\gs\GettingStartedLib\obj\Debug\GettingStartedLib.pdb

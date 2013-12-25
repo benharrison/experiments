@@ -1,0 +1,6 @@
+C:\Users\bharisso\Documents\Visual Studio 2012\Projects\gs\GettingStartedClient\bin\Debug\GettingStartedClient.exe.config
+C:\Users\bharisso\Documents\Visual Studio 2012\Projects\gs\GettingStartedClient\bin\Debug\GettingStartedClient.exe
+C:\Users\bharisso\Documents\Visual Studio 2012\Projects\gs\GettingStartedClient\bin\Debug\GettingStartedClient.pdb
+C:\Users\bharisso\Documents\Visual Studio 2012\Projects\gs\GettingStartedClient\obj\Debug\GettingStartedClient.csprojResolveAssemblyReference.cache
+C:\Users\bharisso\Documents\Visual Studio 2012\Projects\gs\GettingStartedClient\obj\Debug\GettingStartedClient.exe
+C:\Users\bharisso\Documents\Visual Studio 2012\Projects\gs\GettingStartedClient\obj\Debug\GettingStartedClient.pdb
