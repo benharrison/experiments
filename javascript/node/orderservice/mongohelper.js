@@ -1,6 +1,5 @@
 exports.getAllFromTable = function(tableName, req, res)
 {
-    //var dbResult;
     var MongoClient = require('mongodb').MongoClient;
 
     // Connect to the db
@@ -21,9 +20,9 @@ exports.getAllFromTable = function(tableName, req, res)
             console.log('No document(s) found with defined "find" criteria!');
             res.send("no results found");
           }
+          
           //Close connection
           db.close();
         });
     });
-    
 }
