@@ -8,52 +8,28 @@ app.get('/', function (req, res) {
 });
 
 app.get('/menu', function (req, res) {
-    mongohelper.getAllFromTable('MenuItems', req, res);
+    mongohelper.getFromTable(req, res, 'MenuItems');
 });
 
 app.get('/menu/:category', function (req, res) {
     console.log(req.params);
-    var MongoClient = require('mongodb').MongoClient;
-
-    // Connect to the db
-    MongoClient.connect("mongodb://localhost:27017/OrderServiceDb", function(err, db) {
-        if(err) { return console.dir(err); }
-        
-        var collection = db.collection('MenuItems');
-        
-        collection.find({ 'Category' : req.params.category }).toArray(function (err, result) {
-          if (err) {
-            console.log(err);
-            res.writeHead(500, {'Content-Type': 'text/plain'});
-            res.send("error occurred");
-          } else if (result.length) {
-            console.log('Found: ', result.length);
-            res.send(result);
-          } else {
-            console.log('No document(s) found with defined "find" criteria!');
-            res.send("no results found");
-          }
-          
-          //Close connection
-          db.close();
-        });
-    });
+    mongohelper.getFromTable(req, res, 'MenuItems', { 'Category' : req.params.category });
 });
 
 app.get('/orders', function (req, res) {
-    mongohelper.getAllFromTable('Orders', req, res);
+    mongohelper.getFromTable(req, res, 'Orders');
 });
 
 app.get('/stores', function (req, res) {
-    mongohelper.getAllFromTable('Stores', req, res);
+    mongohelper.getFromTable(req, res, 'Stores');
 });
 
 app.get('/subscribers', function (req, res) {
-    mongohelper.getAllFromTable('Subscribers', req, res);
+    mongohelper.getFromTable(req, res, 'Subscribers');
 });
 
 app.get('/customers', function (req, res) {
-    mongohelper.getAllFromTable('Customers', req, res);
+    mongohelper.getFromTable(req, res, 'Customers');
 });
 
 var server = app.listen(3000, function () {

@@ -1,4 +1,4 @@
-exports.getAllFromTable = function(tableName, req, res)
+exports.getFromTable = function(req, res, tableName, find)
 {
     var MongoClient = require('mongodb').MongoClient;
 
