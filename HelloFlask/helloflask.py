@@ -1,4 +1,6 @@
-from flask import Flask
+import os
+import uuid
+from flask import Flask, request
 
 app = Flask(__name__)
 
@@ -6,6 +8,17 @@ app = Flask(__name__)
 @app.route('/index')
 def index():
     return 'Hello Flask!'
+
+@app.route('/upload-file', methods=['POST'])
+def uploadFile():
+    file = request.files['inputFile']
+
+    if file:
+        filename = str(uuid.uuid1()) + '_' + file.filename
+        file.save(os.path.join('/home/bentest/Documents/uploads', filename))
+        return filename
+    else:
+        return 'failed'
 
 @app.route('/reverse-string/<strToReverse>')
 def reverseString(strToReverse):
