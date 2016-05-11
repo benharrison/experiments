@@ -10,6 +10,16 @@ app.debug = True
 def index():
     return 'Hello Flask!'
 
+@app.route('/authenticate', methods=['POST'])
+def authenticate():
+    username = request.form['username']
+    password = request.form['password']
+
+    if username == 'ben' and password == 'password':
+        return 'True'
+
+    return 'False'
+
 @app.route('/upload-file', methods=['POST'])
 def uploadFile():
     file = request.files['inputFile']
