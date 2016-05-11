@@ -10,6 +10,20 @@ app.debug = True
 def index():
     return 'Hello Flask!'
 
+@app.route('/values', methods=['POST', 'GET'])
+def values():
+    if request.values['username']:
+        return request.values['username']
+
+    return 'False'
+
+@app.route('/args')
+def args():
+    if request.args['username']:
+        return 'True'
+
+    return 'False'
+
 @app.route('/authenticate', methods=['POST'])
 def authenticate():
     username = request.form['username']
