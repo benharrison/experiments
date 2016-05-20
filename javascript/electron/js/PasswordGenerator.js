@@ -1,4 +1,5 @@
-window.PasswordGenerator = (function(){
+PasswordGenerator = (function(){
+
     // private
     var _defaultOptions = {
       length: 10,
@@ -7,7 +8,7 @@ window.PasswordGenerator = (function(){
       digits: true,
       specialcharacters: true,
       spaces: false,
-      brackets: false,
+      brackets: false
     };
 
     var _alpha              = 'abcdefghijklmnopqrstuvwxyz';
@@ -20,8 +21,9 @@ window.PasswordGenerator = (function(){
 
     function mergeObjects(obj1, obj2){
         var obj3 = {};
-        for (var attrname in obj1) { obj3[attrname] = obj1[attrname]; }
-        for (var attrname in obj2) { obj3[attrname] = obj2[attrname]; }
+        var attrname;
+        for (attrname in obj1) { obj3[attrname] = obj1[attrname]; }
+        for (attrname in obj2) { obj3[attrname] = obj2[attrname]; }
         return obj3;
     }
 
@@ -33,22 +35,23 @@ window.PasswordGenerator = (function(){
 
         strength = Math.min(6, Math.floor(password.length / 8));
 
-        for (var i = 0; i < _lowerCase.length; i++) {
+        var i;
+        for (i = 0; i < _lowerCase.length; i++) {
             if ( !hasLower && password.indexOf(_lowerCase[i]) > -1 ) hasLower = true;
             if ( !hasUpper && password.indexOf(_upperCase[i]) > -1 ) hasUpper = true;
             if ( hasLower && hasUpper ) { strength++; break; } // must have BOTH
         }
 
-        for (var i = 0; i < _digits.length; i++) {
+        for (i = 0; i < _digits.length; i++) {
             if ( password.indexOf(_digits[i]) > -1 ) { strength++; break; }
         }
 
-        for (var i = 0; i < _specialCharacters.length; i++) {
+        for (i = 0; i < _specialCharacters.length; i++) {
             if ( password.indexOf(_specialCharacters[i]) > -1 ) { strength++; break; }
         }
 
         var others = [].concat(_spaces, _brackets);
-        for (var i = 0; i < others.length; i++) {
+        for (i = 0; i < others.length; i++) {
             if ( password.indexOf(others[i]) > -1 ) { strength++; break; }
         }
 
@@ -59,10 +62,9 @@ window.PasswordGenerator = (function(){
         var settings = mergeObjects(_defaultOptions, options);
         var chars = [];
 
-        var alpha = _alpha.split('');
-        if (settings.spaces) alpha.push(' ');
-        if (settings.lowercase || settings.uppercase) chars.push(alpha);
-
+        if (settings.spaces) chars.push(' ');
+        if (settings.lowercase) chars.push(_lowerCase);
+        if (settings.uppercase) chars.push(_upperCase);
         if (settings.digits) chars.push(_digits);
         if (settings.specialcharacters) chars.push(_specialCharacters);
         if (settings.brackets) chars.push(_brackets);
@@ -75,7 +77,6 @@ window.PasswordGenerator = (function(){
             var rand2 = Math.floor(Math.random() * chars[rand1].length);
 
             var character = chars[rand1][rand2]
-            if (settings.uppercase && Math.random() > 0.5) { character = character.toUpperCase(); }
 
             generatedPassword = generatedPassword + character;
         }
