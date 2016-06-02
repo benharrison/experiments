@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html ng-app="angularApp" lang="en-US">
+<head>
+	<meta charset="utf-8"/>
+
+	<title>BMI</title>
+
+	<!-- CSS -->
+	<style type="text/css">
+		tr.highlight{
+			background-color:#ff0;
+			}
+	</style>
+</head>
+<body>
+	<div ng-controller="BmiController">
+		<input type="number" ng-model="heightFeet">
+		<input type="number" ng-model="heightInches">
+		<input type="number" ng-model="weightPounds">
+
+		<div>{{ calculateBmi() }}</div>
+
+		<table>
+			<tr id="underweight" ng-class="{ highlight: (calculateBmi() < 18.5) }">
+				<td>Underweight</td>
+				<td>&lt; 18.5</td>
+			</tr>
+			<tr id="normalweight" ng-class="{ highlight: (calculateBmi() >= 18.5 && calculateBmi() < 25) }">
+				<td>Normal weight</td>
+				<td>18.5-24.9</td>
+			</tr>
+			<tr id="overweight" ng-class="{ highlight: (calculateBmi() >= 25 && calculateBmi() < 30 ) }">
+				<td>Overweight</td>
+				<td>25-29.9</td>
+			</tr>
+			<tr id="obese1" ng-class="{ highlight: (calculateBmi() >= 30 && calculateBmi() < 35) }">
+				<td>Obesity</td>
+				<td>30-34.9</td>
+			</tr>
+			<tr id="obese2" ng-class="{ highlight: (calculateBmi() >= 35 && calculateBmi() < 40) }">
+				<td>Obesity</td>
+				<td>35-39.9</td>
+			</tr>
+			<tr id="morbid" ng-class="{ highlight: (calculateBmi() >= 40) }">
+				<td>Morbid Obesity</td>
+				<td>40 &gt;</td>
+			</tr>
+		</table>
+	</div>
+</body>
+
+	<!-- JavaScript -->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+	<script type="text/javascript">
+		angular.module('angularApp', [])
+		  .controller('BmiController', function($scope, $log) {
+				$scope.heightFeet = 5;
+				$scope.heightInches = 10;
+				$scope.weightPounds = 205;
+
+				$scope.calculateBmi = function () {
+					var totalInches = $scope.heightFeet * 12;
+							totalInches += $scope.heightInches;
+					var bmi	= ($scope.weightPounds * 703) / (totalInches * totalInches);
+
+					$log.log($scope.heightFeet, $scope.heightInches, $scope.weightPounds, totalInches, bmi);
+
+					// return rounded
+					return Math.round(bmi * 100) / 100;
+				}
+		  });
+	</script>
+</html>
