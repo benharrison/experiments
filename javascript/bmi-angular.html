@@ -14,34 +14,34 @@
 </head>
 <body>
 	<div ng-controller="BmiController">
-		<input type="number" ng-model="heightFeet">
-		<input type="number" ng-model="heightInches">
-		<input type="number" ng-model="weightPounds">
+		<input type="number" ng-change="calculateBmi()" ng-model="heightFeet">
+		<input type="number" ng-change="calculateBmi()" ng-model="heightInches">
+		<input type="number" ng-change="calculateBmi()" ng-model="weightPounds">
 
-		<div>{{ calculateBmi() }}</div>
+		<div>{{ bmi }}</div>
 
 		<table>
-			<tr id="underweight" ng-class="{ highlight: (calculateBmi() < 18.5) }">
+			<tr id="underweight" ng-class="{ highlight: (bmiClassification == 'under-weight') }">
 				<td>Underweight</td>
 				<td>&lt; 18.5</td>
 			</tr>
-			<tr id="normalweight" ng-class="{ highlight: (calculateBmi() >= 18.5 && calculateBmi() < 25) }">
+			<tr id="normalweight" ng-class="{ highlight: (bmiClassification == 'normal-weight') }">
 				<td>Normal weight</td>
 				<td>18.5-24.9</td>
 			</tr>
-			<tr id="overweight" ng-class="{ highlight: (calculateBmi() >= 25 && calculateBmi() < 30 ) }">
+			<tr id="overweight" ng-class="{ highlight: (bmiClassification == 'over-weight') }">
 				<td>Overweight</td>
 				<td>25-29.9</td>
 			</tr>
-			<tr id="obese1" ng-class="{ highlight: (calculateBmi() >= 30 && calculateBmi() < 35) }">
+			<tr id="obese1" ng-class="{ highlight: (bmiClassification == 'obese-level1') }">
 				<td>Obesity</td>
 				<td>30-34.9</td>
 			</tr>
-			<tr id="obese2" ng-class="{ highlight: (calculateBmi() >= 35 && calculateBmi() < 40) }">
+			<tr id="obese2" ng-class="{ highlight: (bmiClassification == 'obese-level2') }">
 				<td>Obesity</td>
 				<td>35-39.9</td>
 			</tr>
-			<tr id="morbid" ng-class="{ highlight: (calculateBmi() >= 40) }">
+			<tr id="morbid" ng-class="{ highlight: (bmiClassification == 'morbid-obesity') }">
 				<td>Morbid Obesity</td>
 				<td>40 &gt;</td>
 			</tr>
@@ -54,19 +54,51 @@
 	<script type="text/javascript">
 		angular.module('angularApp', [])
 		  .controller('BmiController', function($scope, $log) {
+				$scope.bmi = 0;
+				$scope.bmiClassification = '';
+
 				$scope.heightFeet = 5;
 				$scope.heightInches = 10;
 				$scope.weightPounds = 205;
 
 				$scope.calculateBmi = function () {
+					validateInput();
+
 					var totalInches = $scope.heightFeet * 12;
 							totalInches += $scope.heightInches;
 					var bmi	= ($scope.weightPounds * 703) / (totalInches * totalInches);
+					$scope.bmi = Math.round(bmi * 100) / 100;
+					setBmiClassification();
+					return $scope.bmi;
+				};
 
-					$log.log($scope.heightFeet, $scope.heightInches, $scope.weightPounds, totalInches, bmi);
+				function validateInput () {
+					if ($scope.heightInches >= 12) {
+						var feet = Math.floor($scope.heightInches / 12);
+						$scope.heightFeet += feet;
+						$scope.heightInches = ($scope.heightInches % 12);
+					}
 
-					// return rounded
-					return Math.round(bmi * 100) / 100;
+					if ($scope.heightInches < 0) {
+						$scope.heightFeet -= 1;
+						$scope.heightInches = 11;
+					}
+				}
+
+				function setBmiClassification () {
+					if ($scope.bmi < 18.5) {
+						$scope.bmiClassification = 'under-weight';
+					} else if ($scope.bmi < 25) {
+						$scope.bmiClassification = 'normal-weight';
+					} else if ($scope.bmi < 30) {
+						$scope.bmiClassification = 'over-weight';
+					} else if ($scope.bmi < 35) {
+						$scope.bmiClassification = 'obese-level1';
+					} else if ($scope.bmi < 40) {
+						$scope.bmiClassification = 'obese-level2';
+					} else if ($scope.bmi >= 40) {
+						$scope.bmiClassification = 'morbid-obesity';
+					}
 				}
 		  });
 	</script>
