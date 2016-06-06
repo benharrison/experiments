@@ -19,8 +19,12 @@
     }
 
     function showInfo(data, tabletop) {
-      alert("Successfully processed!")
-      console.log(data);
+      console.log(chooseRandom(data));
+    }
+
+    function chooseRandom (list) {
+      var randomIndex = Math.floor(Math.random() * list.length);
+      return list[randomIndex];
     }
   </script>
 </html>
