@@ -13,7 +13,7 @@ function showInfo(data, tabletop) {
 }
 
 function chooseRandom (list) {
-  var randomIndex = Math.floor(Math.random() * list.length);
+  var randomIndex = _.random(list.length);
   return list[randomIndex];
 }
 ;;;
