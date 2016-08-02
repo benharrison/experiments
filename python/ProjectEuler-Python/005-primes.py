@@ -32,7 +32,7 @@ def is_prime(n):
     return True  
 
 # build descending lists of primes and non-primes
-for x in range(MAX-1,0,-1): # 9,8,7..
+for x in range(MAX-1,0,-1): # 19,17,13,11,7,5,3,2
     if is_prime(x):
         primes.append(x)
     else:
